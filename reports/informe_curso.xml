@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <report
+            id="escuela_vela.report_curso"
+            model="escuela_vela.curso"
+            string="Informe de Curso"
+            report_type="qweb-pdf"
+            name="escuela_vela.report_curso_view"
+            file="escuela_vela.report_curso_view"
+        />
+        <!-- Report Template -->
+        <template id="report_curso_view">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="curso">
+                    <div class="page">
+                        <h2>Informe de Curso</h2>
+
+                        <!-- Datos del Curso -->
+                        <div>
+                            <strong>Título:</strong>
+                            <span t-esc="curso.title" />
+                        </div>
+                        <div>
+                            <strong>Duración en días:</strong>
+                            <span t-esc="curso.durationInDays" />
+                        </div>
+                        <div>
+                            <strong>Duración en horas:</strong>
+                            <span t-esc="curso.durationInHours" />
+                        </div>
+                        <div>
+                            <strong>Precio:</strong>
+                            <span t-esc="curso.price" />
+                        </div>
+
+                        <!-- Escuela -->
+                        <div>
+                            <strong>Escuela:</strong>
+                            <span t-esc="curso.escuela.name" />
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

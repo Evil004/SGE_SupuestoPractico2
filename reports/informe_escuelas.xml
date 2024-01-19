@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report
+        id="escuela_vela.report_escuela"
+        model="escuela_vela.escuela"
+        string="Informe de Escuela"
+        report_type="qweb-pdf"
+        name="escuela_vela.report_escuela_view"
+        file="escuela_vela.report_escuela_view"
+    />
+    <template id="report_escuela_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="escuela">
+                <div class="page">
+                    <h2>Informe de Escuela</h2>
+
+                    <!-- Datos de la Escuela -->
+                    <div>
+                        <strong>Denominación:</strong>
+                        <span t-esc="escuela.name" />
+                    </div>
+
+                    <div>
+                        <strong>Teléfono:</strong>
+                        <span t-esc="escuela.phoneNumber" />
+                    </div>
+                    <div>
+                        <strong>Email:</strong>
+                        <span t-esc="escuela.email" />
+                    </div>
+
+                    <!-- Monitores -->
+                    <div>
+                        <strong>Monitores:</strong>
+                        <ul>
+                            <li t-foreach="escuela.monitores" t-as="monitor">
+                                <span t-esc="monitor.name" />
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Cursos -->
+                    <div>
+                        <strong>Cursos:</strong>
+                        <ul>
+                            <li t-foreach="escuela.courses" t-as="curso">
+                                <span t-esc="curso.title" />
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Alumnos -->
+                    <div>
+                        <strong>Alumnos:</strong>
+                        <ul>
+                            <li t-foreach="escuela.alumnos" t-as="alumno">
+                                <span t-esc="alumno.name" />
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>
